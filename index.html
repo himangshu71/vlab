@@ -1,0 +1,328 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <title>Entity Relationship Modelling - 2</title>
+  <link rel="stylesheet" href="/css/1.css" type="text/css"/>
+</head>
+
+<body>
+
+<table style="width:100%">
+<tr><td style="vertical-align:top; padding: 40px 40px 0 0">
+<table style="width:20em"><tr>
+<td><a href="section004.html">Previous Page</a></td>
+<td><a href="section006.html">Next Page</a></td>
+<td><a href="ch2.html">Up One Level</a></td>
+</tr></table>
+<p>Lecture Slides available: <a href="/slides/er2.pdf">PDF</a> <a href="/slides/er2.ppt">PowerPoint</a></p>
+
+<h1><a name="_Toc525977640" id="_Toc525977640"></a><a name="_Toc67114409" id="_Toc67114409">Entity Relationship Modelling - 2</a> </h1>
+<h2>Contents</h2>
+ <ul>
+  <li><a href="section005.html#_Toc67114410">Country Bus Company</a>
+</li>
+  <li><a href="section005.html#_Toc67114411">Entities</a>
+</li>
+  <li><a href="section005.html#_Toc67114412">Relationships</a>
+</li>
+  <li><a href="section005.html#_Toc67114413">Draw E-R Diagram</a>
+</li>
+  <li><a href="section005.html#_Toc67114414">Attributes</a>
+</li>
+  <li><a href="section005.html#_Toc67114415">Problems with ER Models</a>
+</li>
+  <li><a href="section005.html#_Toc67114416">Fan traps</a>
+</li>
+  <li><a href="section005.html#_Toc67114417">Chasm traps</a>
+</li>
+  <li><a href="section005.html#_Toc67114418">Enhanced ER Models (EER)</a>
+</li>
+  <li><a href="section005.html#_Toc67114419">Specialisation</a>
+</li>
+  <li><a href="section005.html#_Toc67114420">Generalisation</a>
+</li>
+  <li><a href="section005.html#_myauto1"> Categorisation </a>
+</li>
+  <li><a href="section005.html#_myauto2"> Aggregation </a>
+</li>
+ </ul>
+<p>Overview </p>
+<ul>
+<li>construct an ER model </li>
+<li>understand the problems associated with ER models </li>
+<li>understand the modelling concepts of Enhanced ER modelling </li>
+</ul>
+<h2><a name="_Toc525977641" id="_Toc525977641"></a><a name="_Toc67114410" id="_Toc67114410">Country Bus Company</a> </h2>
+<p>A Country Bus Company owns a number of busses. Each bus is allocated to a particular route, although some routes may have several busses. Each route passes through a number of towns. One or more drivers are allocated to each stage of a route, which corresponds to a journey through some or all of the towns on a route. Some of the towns have a garage where busses are kept and each of the busses are identified by the registration number and can carry different numbers of passengers, since the vehicles vary in size and can be single or double-decked. Each route is identified by a route number and information is available on the average number of passengers carried per day for each route. Drivers have an employee number, name, address, and sometimes a telephone number. </p>
+<h2><a name="_Toc525977642" id="_Toc525977642"></a><a name="_Toc67114411" id="_Toc67114411">Entities</a> </h2>
+<ul>
+<li>Bus - Company owns busses and will hold information about them. </li>
+<li>Route - Buses travel on routes and will need described. </li>
+<li>Town - Buses pass through towns and need to know about them </li>
+<li>Driver - Company employs drivers, personnel will hold their data. </li>
+<li>Stage - Routes are made up of stages </li>
+<li>Garage - Garage houses buses, and need to know where they are. </li>
+</ul>
+<h2><a name="_Toc525977643" id="_Toc525977643"></a><a name="_Toc67114412" id="_Toc67114412">Relationships</a> </h2>
+<ul>
+<li>A bus is allocated to a route and a route may have several buses. </li>
+<li>Bus-route (m:1) is serviced by </li>
+<li>A route comprises of one or more stages. </li>
+<li>route-stage (1:m) comprises </li>
+<li>One or more drivers are allocated to each stage. </li>
+<li>driver-stage (m:1) is allocated </li>
+<li>A stage passes through some or all of the towns on a route. </li>
+<li>stage-town (m:n) passes-through </li>
+<li>A route passes through some or all of the towns </li>
+<li>route-town (m:n) passes-through </li>
+<li>Some of the towns have a garage </li>
+<li>garage-town (1:1) is situated </li>
+<li>A garage keeps buses and each bus has one `home' garage </li>
+<li>garage-bus (m:1) is garaged </li>
+</ul>
+<h2><a name="_Toc525977644" id="_Toc525977644"></a><a name="_Toc67114413" id="_Toc67114413">Draw E-R Diagram</a> </h2>
+<p></p>
+<dl class="image">
+  <dt>
+   <img alt="Missing ALT text" width="597" height="211" src="./co22001%20notes_files/image068.gif"  />
+  </dt>
+  <dd>Figure : Bus Company</dd>
+</dl>
+<h2><a name="_Toc67114414" id="_Toc67114414">Attributes</a> </h2>
+<ul>
+<li>Bus (<span style="text-decoration:underline">reg-no</span>,make,size,deck,no-pass) </li>
+<li>Route (<span style="text-decoration:underline">route-no</span>,avg-pass) </li>
+<li>Driver (<span style="text-decoration:underline">emp-no</span>,name,address,tel-no) </li>
+<li>Town (<span style="text-decoration:underline">name</span>) </li>
+<li>Stage (<span style="text-decoration:underline">stage-no</span>) </li>
+<li>Garage (<span style="text-decoration:underline">name</span>,address) </li>
+</ul>
+<h2><a name="_Toc525977646" id="_Toc525977646"></a><a name="_Toc67114415" id="_Toc67114415">Problems with ER Models</a> </h2>
+<p>There are several problems that may arise when designing a conceptual data model. These are known as connection traps. </p>
+<p>There are two main types of connection traps: </p>
+<ol >
+<li>fan traps </li>
+<li>chasm traps </li>
+</ol>
+<h2><a name="_Toc525977647" id="_Toc525977647"></a><a name="_Toc67114416" id="_Toc67114416">Fan traps</a> </h2>
+<p>A fan trap occurs when a model represents a relationship between entity types, but the pathway between certain entity occurrences is ambiguous. It occurs when 1:m relationships fan out from a single entity. </p>
+<dl class="image">
+  <dt>
+    <img alt="Missing ALT text" width="384" height="34" src="./co22001%20notes_files/image070.gif"  />
+  </dt>
+  <dd>Figure : Fan Trap</dd>
+</dl>
+
+<p>A single site contains many departments and employs many staff. However, which staff work in a particular department? </p>
+<p>The fan trap is resolved by restructuring the original ER model to represent the correct association. </p>
+<dl class="image">
+  <dt>
+<img alt="Missing ALT text" width="384" height="34" src="./co22001%20notes_files/image072.gif"  />
+  </dt>
+  <dd>Figure : Resolved Fan Trap</dd>
+</dl>
+
+<h2><a name="_Toc525977648" id="_Toc525977648"></a><a name="_Toc67114417" id="_Toc67114417">Chasm traps</a> </h2>
+<p>A chasm trap occurs when a model suggests the existence of a relationship between entity types, but the pathway does not exist between certain entity occurrences. </p>
+<p>It occurs where there is a relationship with partial participation, which forms part of the pathway between entities that are related. </p>
+<dl class="image">
+  <dt>
+    <img alt="Missing ALT text" width="384" height="39" src="./co22001%20notes_files/image074.gif"  />
+  </dt>
+  <dd>Figure : Chasm Trap</dd>
+</dl>
+
+<ul>
+<li>A single branch is allocated many staff who oversee the management of properties for rent. Not all staff oversee property and not all property is managed by a member of staff. </li>
+<li>What properties are available at a branch? </li>
+<li>The partial participation of Staff and Property in the oversees relation means that some properties cannot be associated with a branch office through a member of staff. </li>
+<li>We need to add the missing relationship which is called `has' between the Branch and the Property entities. </li>
+<li>You need to therefore be careful when you remove relationships which you consider to be redundant. </li>
+</ul>
+<dl class="image">
+  <dt>
+    <img alt="Missing ALT text" width="384" height="96" src="./co22001%20notes_files/image076.gif"  />
+  </dt>
+  <dd>Figure : Resolved Chasm Trap</dd>
+</dl>
+
+<h2><a name="_Toc525977649" id="_Toc525977649"></a><a name="_Toc67114418" id="_Toc67114418">Enhanced ER Models (EER)</a> </h2>
+<p>The basic concepts of ER modelling is not powerful enough for some complex applications... We require some additional semantic modelling concepts: </p>
+<ul>
+<li>Specialisation </li>
+<li>Generalisation </li>
+<li>Categorisation </li>
+<li>Aggregation </li>
+</ul>
+<p>First we need some new entity constructs.</p>
+<ul>
+<li>Superclass - an entity type that includes distinct subclasses that require to be represented in a data model. </li>
+<li>Subclass - an entity type that has a distinct role and is also a member of a superclass. </li>
+</ul>
+<dl class="image">
+  <dt>
+    <img alt="Missing ALT text" width="329" height="149" src="./co22001%20notes_files/image078.gif"  />
+  </dt>
+  <dd>Figure : Superclass and subclasses</dd>
+</dl>
+
+<p>Subclasses need not be mutually exclusive; a member of staff may be a manager and a sales person. </p>
+<p>The purpose of introducing superclasses and subclasses is to avoid describing types of staff with possibly different attributes within a single entity. This could waste space and you might want to make some attributes mandatory for some types of staff but other staff would not need these attributes at all. </p>
+<h2><a name="_Toc525977650" id="_Toc525977650"></a><a name="_Toc67114419" id="_Toc67114419">Specialisation</a> </h2>
+<p>This is the process of maximising the differences between members of an entity by identifying their distinguishing characteristics. </p>
+<ul>
+<li>Staff(<span style="text-decoration:underline">staff_no</span>,name,address,dob) </li>
+<li>Manager(bonus) </li>
+<li>Secretary(wp_skills) </li>
+<li>Sales_personnel(sales_area, car_allowance) </li>
+</ul>
+<dl class="image">
+  <dt>
+    <img alt="Missing ALT text" width="384" height="126" src="./co22001%20notes_files/image080.gif"  />
+  </dt>
+  <dd>Figure : Specialisation in action</dd>
+</dl>
+
+<ul>
+<li>Here we have shown that the manages relationship is only applicable to the Manager subclass, whereas the works_for relationship is applicable to all staff. </li>
+<li>It is possible to have subclasses of subclasses. </li>
+</ul>
+<h2><a name="_Toc525977651" id="_Toc525977651"></a><a name="_Toc67114420" id="_Toc67114420">Generalisation</a> </h2>
+<p>Generalisation is the process of minimising the differences between entities by identifying common features. </p>
+<p>This is the identification of a generalised superclass from the original subclasses. This is the process of identifying the common attributes and relationships. </p>
+<p>
+For instance, taking:
+</p>
+<pre>
+ car(<u>regno</u>,colour,make,model,numSeats)
+ motorbike(<u>regno</u>,colour,make,model,hasWindshield)
+</pre>
+<p>
+And forming:
+</p>
+<pre>
+ vehicle(<u>regno</u>,colour,make,model,numSeats,hasWindshielf)
+</pre>
+<p>
+In this case <i>vehicle</i> has numSeats which would be NULL if the
+vehicle was a motorbike, and has hasWindshield which would be NULL if it was
+a car.
+</p>
+<h2><a name="_myauto1" id="_myauto1"> Categorisation </a></h2>
+<p>
+Left as an exercise to research.
+</p>
+<h2><a name="_myauto2" id="_myauto2"> Aggregation </a></h2>
+<p>
+Left as an exercise to research.
+</p>
+<p></p><table style="width:20em"><tr>
+<td><a href="section004.html">Previous Page</a></td>
+<td><a href="section006.html">Next Page</a></td>
+<td><a href="ch2.html">Up One Level</a></td>
+</tr></table>
+</td><td style="vertical-align:top; padding: 10px 0 0 0">
+
+
+<table class="mmenu">
+<!-- BEGINMENU -->
+<tr><td>
+<table class="submenu">
+<tr><td class="subti">Database Notes</td></tr>
+<tr><td class="subel"><a href="/">Online Notes</a></td></tr>
+<tr><td class="subel"><a href="/resources/other.html">Reference Pages</a></td></tr>
+</table>
+</td></tr><tr><td>
+</td></tr><tr><td>
+<table class="submenu">
+<tr><td class="subti">Tutorial Activities</td></tr>
+<tr><td class="subel"><a href="/sql/">Online SQL</a></td></tr>
+<tr><td class="subel"><a href="/mc/">Online Quiz</a></td></tr>
+<tr><td class="subel"><a href="/forums/">Discussion Forum</a></td></tr>
+</table>
+</td></tr><tr><td>
+</td></tr><tr><td>
+<table class="submenu">
+<tr><td class="subti">Future Stuff&nbsp;&nbsp;&nbsp;</td></tr>
+<tr><td class="subel">Online Relational Algebra</td></tr>
+<tr><td class="subel">News</td></tr>
+</table>
+</td></tr></table>
+
+<!-- ENDMENU -->
+
+</td></tr>
+</table>
+
+</body>
+</html>
+
+
+<style>/* CSS for color theme */
+
+/* Body */
+body {
+    background-color: white;
+    color: #333; /* dark gray text */
+    font-family: Arial, sans-serif;
+}
+
+/* Headings */
+h1, h2 {
+    color: #336699; /* blue */
+}
+
+/* Links */
+a {
+    color: #FFD700; /* yellow */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Tables */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table, th, td {
+    border: 1px solid #336699; /* blue */
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+/* Images */
+.image img {
+    border: 2px solid #FFD700; /* yellow */
+}
+
+/* Lists */
+ul, ol {
+    list-style-type: none;
+}
+
+/* Code blocks */
+pre {
+    background-color: #336699; /* blue */
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Navigation Links */
+.mmenu .submenu .subel a {
+    color: #336699; /* blue */
+}
+
+.mmenu .submenu .subel a:hover {
+    color: #FFD700; /* yellow */
+}
+</style>
